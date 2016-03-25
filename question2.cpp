@@ -1,8 +1,8 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 //                         COMPUTER METHODS 3 PRACTICAL TEST 1 (MOCK)
-// Name:
-// Student No:
-// Date: 
+// Name:Langelihle Ngobese
+// Student No:213571644	
+// Date: 24 March 2016
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 #include <iostream>
 
@@ -21,14 +21,51 @@ using namespace std;
 // ***** DO NOT MODIFY CODE BELOW THIS LINE *****
 int main(int argc, char *argv[]) {
 
-	Time myTime(8, 40);									// instantiate time class 
-
+	Time myTime(8,40);									// instantiate time class 
 	cout << "CM3 starts at " << myTime << endl;			// demonstrate overloaded stream insertion operator
+	//cout << myTime;
 
 	myTime.set(10, 30);									// change the time
 
 	int hours, mins;									// get changed time
 	myTime.get(hours, mins);
 	cout << "Design 1 starts at " << mins << " past " << hours;   // display time in another format
+
+}
+
+class Time{
+public:
+	Time(){}
+
+	Time(int hours,int minutes){
+		cout << hours << ":" << minutes << endl;
+} 
+	~Time(){}
+
+	void set(int h, int m){
+		if (h >= 0 && h < 24)
+			hours = h;
+		else cout << "hour must be between 0-23" << endl;
+		
+		
+		if (m >= 0 && m<60)
+		minutes = m;
+		else cout << "minute must be between 0-59" << endl;
+	}
+
+
+	int get(int,int){
+		return hours;
+		return minutes;
+	}
+
+	friend ostream &operator<<(ostream &p, Time &t);
+
+private:
+	int hours, minutes;
+};
+
+ostream &operator<<(ostream &p, Time &t){
+	p << t.hours << ":" << t.minutes << endl;
 
 }
